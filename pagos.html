@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Registrar Pagos</title>
+  <link rel="stylesheet" href="css/style.css" />
+</head>
+<body>
+  <header>
+    <h1>Registrar Pagos</h1>
+  </header>
+
+  <main class="dashboard-container">
+    <section>
+      <form id="formPago">
+        <label>Monto:</label>
+        <input type="number" step="0.01" id="monto" required />
+
+        <label>Tipo:</label>
+        <select id="tipo" required>
+          <option value="Necesidad">Necesidad</option>
+          <option value="Deseo">Deseo</option>
+          <option value="Ahorro/Deuda">Ahorro/Deuda</option>
+        </select>
+
+        <label>Descripción:</label>
+        <input type="text" id="descripcion" required />
+
+        <label>Fecha:</label>
+        <input type="date" id="fecha" required />
+
+        <button type="submit">Guardar Pago</button>
+      </form>
+    </section>
+
+    <section>
+      <h2>Historial de Pagos</h2>
+      <ul id="listaPagos"></ul>
+    </section>
+  </main>
+
+  <footer>
+    <p>&copy; 2025 Finanzas David</p>
+  </footer>
+
+  <script>
+    const form = document.getElementById('formPago');
+    const lista = document.getElementById('listaPagos');
+
+    const cargarPagos = () => {
+      const pagos = JSON.parse(localStorage.getItem('pagos')) || [];
+      lista.innerHTML = '';
+      pagos.forEach((pago, index) => {
+        const li = document.createElement('li');
+        li.textContent = `${pago.fecha}: $${pago.monto} - ${pago.tipo} - ${pago.descripcion}`;
+        lista.appendChild(li);
+      });
+    };
+
+    form.addEventListener('submit', (e) => {
+      e.preventDefault();
+      const monto = parseFloat(document.getElementById('monto').value);
+      const tipo = document.getElementById('tipo').value;
+      const descripcion = document.getElementById('descripcion').value;
+      const fecha = document.getElementById('fecha').value;
+
+      const nuevoPago = { monto, tipo, descripcion, fecha };
+      const pagos = JSON.parse(localStorage.getItem('pagos')) || [];
+      pagos.push(nuevoPago);
+      localStorage.setItem('pagos', JSON.stringify(pagos));
+      form.reset();
+      cargarPagos();
+    });
+
+    document.addEventListener('DOMContentLoaded', cargarPagos);
+  </script>
+</body>
+</html>

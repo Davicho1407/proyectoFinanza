@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dashboard Finanzas Personales</title>
+    <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+    <header>
+        <h1>Dashboard General</h1>
+    </header>
+    <main class="dashboard-container">
+        <section class="resumen-box">
+            <h2>Resumen del Mes</h2>
+            <ul>
+                <li>Ingreso Total: <span id="ingresoTotal">$0.00</span></li>
+                <li>Gastos Total: <span id="gastosTotal">$0.00</span></li>
+                <li>Ahorros Acumulado: <span id="ahorrosAcumulado">$0.00</span></li>
+                <li>Inversiones Acumulado: <span id="inversionesAcumulado">$0.00</span></li>
+                <li>Deuda Pendiente: <span id="deudaPendiente">$0.00</span></li>
+                <li>Dinero Prestado Pendiente: <span id="dineroPrestadoPendiente">$0.00</span></li>
+            </ul>
+        </section>
+        <section class="grafico">
+            <h2>Regla 50/30/20</h2>
+            <canvas id="graficoRegla"></canvas>
+        </section>
+        <section class="metas">
+            <h2>Metas Financieras</h2>
+            <ul>
+                <li>Fondo de Emergencia: <span id="metaEmergencia">$0.00</span> / <span>$200</span></li>
+                <li>Salir de Deudas: <span id="metaDeuda">$0.00</span> / <span>$440</span></li>
+                <li>Inversión Objetivo: <span id="metaInversion">$0.00</span> / <span>$150</span></li>
+            </ul>
+        </section>
+        <section class="acciones">
+            <h2>Acciones Recomendadas</h2>
+            <ul>
+                <li>Revisar suscripciones mensuales</li>
+                <li>Establecer un presupuesto semanal</li>
+                <li>Ahorrar un porcentaje de cada ingreso</li>
+                <li>Invertir en fondos indexados</li>
+            </ul>
+    </main>
+    <footer>
+        <p>&copy; 2023 Dashboard Finanzas Personales. Todos los derechos reservados.</p>
+        <p>Desarrollado por David Imbaquingo</p>
+    </footer>
+
+    <script src="js/dashboard.js"></script>
+</body>
+</html>
